@@ -1,21 +1,57 @@
-import { FormEvent, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { ContactContainer, ContactForm, ContactText } from "./styles";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { phoneNumber } from "../../utils/validations";
+import { normalizePhoneNumber } from "../../utils/masks";
+
+interface IFormInputs {
+  name: string;
+  email: string;
+  site: string;
+  phone: string;
+  corporateName?: string;
+}
+
+let schema = yup.object().shape({
+  name: yup.string().required("Nome é obrigatório."),
+  email: yup
+    .string()
+    .email("Insira um e-mail válido.")
+    .required("Email é obrigatório."),
+  site: yup
+    .string()
+    .url("Insira um website válido")
+    .required("Site é obrigatório."),
+  corporateName: yup.string().required("Razão Social é obrigatória."),
+  phone: yup
+    .string()
+    .matches(phoneNumber, "Insira um telefone válido")
+    .required("Telefone é obrigatório."),
+});
 
 export function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [corporateName, setCorporateName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [site, setSite] = useState("");
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    console.log(corporateName, name, email, phone, site);
-    setPhone("");
-    setEmail("");
-    setCorporateName("");
-    setSite("");
-    setName("");
-  }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = useCallback((data: any) => {
+    alert("Dados inseridos com sucesso!");
+  }, []);
+
+  const phoneValue = watch("phone");
+
+  useEffect(() => {
+    setValue("phone", normalizePhoneNumber(phoneValue));
+  }, [phoneValue]);
+
   return (
     <ContactContainer>
       <ContactText>
@@ -26,64 +62,38 @@ export function Contact() {
           formulário e o nosso time de parcerias entrará em contato com você.
         </p>
       </ContactText>
-      <ContactForm onSubmit={handleSubmit}>
+      <ContactForm onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="corporate_name">
           <p>Razão Social:</p>
+          {errors.corporateName && <span>{errors.corporateName.message}</span>}
           <input
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setCorporateName(e.target.value)
-            }
-            value={corporateName}
             type="text"
-            name="corporate_name"
+            id="corporateName"
+            {...register("corporateName")}
           />
         </label>
         <div>
           <label htmlFor="name">
             <p>Nome:</p>
-            <input
-              value={name}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setName(e.target.value)
-              }
-              type="text"
-              name="name"
-            />
+            {errors.name && <span>{errors.name.message}</span>}
+            <input type="text" id="name" {...register("name")} />
           </label>
           <label htmlFor="email">
             <p>E-mail:</p>
-            <input
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(e.target.value)
-              }
-              value={email}
-              type="email"
-              name="email"
-            />
+            {errors.email && <span>{errors.email.message}</span>}
+            <input type="email" id="email" {...register("email")} />
           </label>
         </div>
         <div>
           <label htmlFor="phone">
             <p>Telefone:</p>
-            <input
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPhone(e.target.value)
-              }
-              value={phone}
-              type="text"
-              name="phone"
-            />
+            {errors.phone && <span>{errors.phone.message}</span>}
+            <input type="text" id="phone" {...register("phone")} />
           </label>
           <label htmlFor="site">
             <p>Site:</p>
-            <input
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setSite(e.target.value)
-              }
-              value={site}
-              type="text"
-              name="site"
-            />
+            {errors.site && <span>{errors.site.message}</span>}
+            <input type="text" id="site" {...register("site")} />
           </label>
         </div>
         <button>Enviar</button>

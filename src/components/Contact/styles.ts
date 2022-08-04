@@ -22,6 +22,11 @@ export const ContactForm = styled.form`
   flex-direction: column;
   justify-content: flex-end;
   gap: 2rem;
+  label {
+    span {
+      color: var(--red-500);
+    }
+  }
   input {
     padding: 0 10px;
     -webkit-box-sizing: border-box;
