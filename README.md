@@ -2,13 +2,11 @@
  <h1>:rocket: Desafio Pagcom</h1>
 </div>
 
-##
-
 <p align="center">Desafio proposto pela empresa <a href="https://pagcom.com.br">Pagcom<a/> para a vaga de Front End Developer</p>
 
 ### :link: Deploy
 
-Para acessar o deploy da aplicação na plataforma da [Vercel](https://www.vercel.app/), visite [https://desafiopagcom.vercel.app/](https://desafiopagcom.vercel.app/).
+Para acessar o deploy da aplicação na plataforma da [Vercel](https://www.vercel.app/), visite [https://desafio-pagcom.vercel.app/](https://desafio-pagcom.vercel.app/).
 
 ---
 
