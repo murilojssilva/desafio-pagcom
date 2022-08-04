@@ -67,6 +67,7 @@ export function Contact() {
           <p>Razão Social:</p>
           {errors.corporateName && <span>{errors.corporateName.message}</span>}
           <input
+            placeholder="Digite aqui o nome da sua empresa"
             type="text"
             id="corporateName"
             {...register("corporateName")}
@@ -76,24 +77,44 @@ export function Contact() {
           <label htmlFor="name">
             <p>Nome:</p>
             {errors.name && <span>{errors.name.message}</span>}
-            <input type="text" id="name" {...register("name")} />
+            <input
+              placeholder="Digite aqui seu nome"
+              type="text"
+              id="name"
+              {...register("name")}
+            />
           </label>
           <label htmlFor="email">
             <p>E-mail:</p>
             {errors.email && <span>{errors.email.message}</span>}
-            <input type="email" id="email" {...register("email")} />
+            <input
+              placeholder="contato@empresa.com"
+              type="email"
+              id="email"
+              {...register("email")}
+            />
           </label>
         </div>
         <div>
           <label htmlFor="phone">
             <p>Telefone:</p>
             {errors.phone && <span>{errors.phone.message}</span>}
-            <input type="text" id="phone" {...register("phone")} />
+            <input
+              placeholder="()_____-____"
+              type="text"
+              id="phone"
+              {...register("phone")}
+            />
           </label>
           <label htmlFor="site">
             <p>Site:</p>
             {errors.site && <span>{errors.site.message}</span>}
-            <input type="text" id="site" {...register("site")} />
+            <input
+              placeholder="https://suaempresa.com.br"
+              type="text"
+              id="site"
+              {...register("site")}
+            />
           </label>
         </div>
         <button>Enviar</button>
