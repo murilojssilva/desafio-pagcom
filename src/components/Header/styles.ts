@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
     text-align: justify;
   }
   img {
-    height: 1rem;
+    height: 1.5rem;
+    margin-bottom: -0.5rem;
   }
 `;
