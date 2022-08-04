@@ -1,13 +1,8 @@
 import styled from "styled-components";
+import { SectionContainer } from "../../screens/_layouts/Section/styles";
 
-export const ComeTogetherContainer = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
-  gap: 2rem;
+export const ComeTogetherContainer = styled(SectionContainer)`
   height: 23rem;
-  padding: 1rem 0;
-
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
     height: 100%;

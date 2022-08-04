@@ -1,13 +1,8 @@
 import styled from "styled-components";
+import { SectionContainer } from "../../screens/_layouts/Section/styles";
 
-export const ContactContainer = styled.section`
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
-  gap: 2rem;
-  padding: 1rem 0;
-
+export const ContactContainer = styled(SectionContainer)`
+  padding: 2rem 0;
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
   }
@@ -32,7 +27,7 @@ export const ContactForm = styled.form`
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 2px solid var(--gray-200);
+    border: 2px solid ${(props) => props.theme.colors.text};
     width: 100%;
     height: 2rem;
   }

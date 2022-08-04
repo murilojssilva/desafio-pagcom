@@ -3,26 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         --shape: #FFFFFF;
-        --gray-50: #F3F2F2;
-        --gray-100: ##9F9F9F;
-        --gray-200: #3C3F45;
-        --gray-300: #B1AFAA;
-        --gray-400: #9B9892;
-        --gray-500: #85817A;
-        --gray-600: #6A6762;
-        --gray-700: #504E49;
-        --gray-800: #353431;
-        --gray-900: #1B1A18;
-        --gray-950: #121214;
-        
+        --gray-500: #939393;
         --blue-100: #31ABF8;
-        --blue-200: #30cfd0;
-        --blue-300: #34A6EB;
-        --blue-500: ##146695;
-        --blue-600: #447493;
-        --blue-700: #084d6e;
-        --blue-800: #115798
-        --blue-900: #0C5A85;
+        --blue-500: #447493;
         --red-500: #F44336;
     }
     * {
@@ -43,11 +26,11 @@ export const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.colors.text};
 		-webkit-font-smoothing: antialiased;
     }
-    body, input, textarea, button, p {
+    body, input, button, p {
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
     }
-    h1, h3, h4, h5, h6, strong {
+    h1, h3{
         font-family: 'Encode Sans SC', sans-serif;
         font-weight: 900;
     }
