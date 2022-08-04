@@ -6,7 +6,6 @@ export const HeaderContainer = styled.header`
   padding: 1rem 3rem;
   border-bottom: 1px solid var(--gray-50);
   box-shadow: 0 0 1em var(--gray-50);
-
   p {
     font-size: 1rem;
     text-align: justify;
