@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { phoneNumber } from "../../utils/validations";
 import { normalizePhoneNumber } from "../../utils/masks";
+import { api } from "../../services/api";
 
 interface IFormInputs {
   name: string;
@@ -12,6 +13,12 @@ interface IFormInputs {
   site: string;
   phone: string;
   corporateName?: string;
+}
+
+interface TitleDetails {
+  userId: number;
+  title: string;
+  body: string;
 }
 
 let schema = yup.object().shape({
@@ -32,6 +39,7 @@ let schema = yup.object().shape({
 });
 
 export function Contact() {
+  const [posts, setPosts] = useState<TitleDetails[]>([]);
   const {
     register,
     handleSubmit,
@@ -52,15 +60,19 @@ export function Contact() {
     setValue("phone", normalizePhoneNumber(phoneValue));
   }, [phoneValue]);
 
+  useEffect(() => {
+    api.get("/posts").then((response) => {
+      setPosts(response.data);
+    });
+  }, []);
+  const post1 = posts.find((post) => post.userId === 1);
+  const post2 = posts.find((post) => post.userId === 2);
   return (
     <ContactContainer>
       <ContactText>
-        <h2>Preencha com seus dados e cadastre-se</h2>
-        <p>Agradecemos seu interesse em ser nosso Parceiro.</p>
-        <p>
-          Para sabermos um pouco a seu respeito, pedmos que preencha o
-          formulário e o nosso time de parcerias entrará em contato com você.
-        </p>
+        <h2>{post1?.title}</h2>
+        <p>{post1?.body}</p>
+        <p>{post2?.body}</p>
       </ContactText>
       <ContactForm onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="corporate_name">

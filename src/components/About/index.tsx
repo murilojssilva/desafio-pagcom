@@ -1,18 +1,30 @@
 import { AboutContainer } from "./styles";
+import { api } from "../../services/api";
+import { useEffect, useState } from "react";
+
+interface TitleDetails {
+  postId: number;
+  name: string;
+  body: string;
+  email: string;
+}
 
 export function About() {
+  const [posts, setPosts] = useState<TitleDetails[]>([]);
+  useEffect(() => {
+    api.get("/comments").then((response) => {
+      setPosts(response.data);
+    });
+  }, []);
+  const post1 = posts.find((post) => post.postId === 1);
   return (
     <AboutContainer>
       <h1>
-        Faça parte de um
+        {post1?.name}
         <br />
-        <span>time</span> de <span>sucesso</span>
+        <span>{post1?.email}</span> de <span>{post1?.email}</span>
       </h1>
-      <p>
-        A Pagcom é uma empresa de 10 anos de vida e estamos em um novo momento,
-        buscando profissionais para representação de meios de pagamento em todo
-        o Brasil.
-      </p>
+      <p>{post1?.body}</p>
     </AboutContainer>
   );
 }

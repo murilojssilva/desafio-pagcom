@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { About } from "../../components/About";
 import { Advantages } from "../../components/Advantages";
 import { ComeTogether } from "../../components/ComeTogether";
