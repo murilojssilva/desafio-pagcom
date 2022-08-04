@@ -6,6 +6,7 @@ export const ComeTogetherContainer = styled.section`
   margin: 0 auto;
   gap: 2rem;
   height: 23rem;
+  padding: 1rem 0;
 
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
