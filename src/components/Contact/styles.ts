@@ -6,7 +6,6 @@ export const ContactContainer = styled.section`
   grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   gap: 2rem;
-  padding: 2rem 0;
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
   }
