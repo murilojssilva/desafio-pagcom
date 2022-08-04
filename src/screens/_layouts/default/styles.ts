@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
 `;
 
 export const LayoutContent = styled.div`

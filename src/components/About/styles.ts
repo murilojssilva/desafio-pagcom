@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const AboutContainer = styled.section`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  margin: 0 auto;
 `;
