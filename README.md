@@ -30,7 +30,6 @@ Além disso, recomendado o uso de um um editor para trabalhar com o código, com
 - [x] Layout
 - [x] Rotas
 - [x] Yup
-- [x] Axios
 
 ---
 
