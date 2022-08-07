@@ -47,12 +47,10 @@ export function ComeTogether() {
         </ul>
       </ComeTogetherText>
       <ComeTogetherImage>
-        {album1?.url ? (
-          <img src={album1?.url} alt={album1?.title} />
-        ) : (
-          <img src={ComeTogetherImg} alt={album1?.title} />
-        )}
-        <img src={album1?.url} alt={album1?.title} />
+        <img
+          src={/*album1?.url*/ ComeTogetherImg}
+          alt={/*album1?.url*/ "Imagem alternativa"}
+        />
       </ComeTogetherImage>
     </ComeTogetherContainer>
   );
