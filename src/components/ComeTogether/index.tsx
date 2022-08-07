@@ -5,8 +5,7 @@ import {
 } from "./styles";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
-
-import comeTogetherImage from "../../assets/come-together-image.png";
+import ComeTogetherImg from "../../assets/come-together-image.png";
 
 interface TitleDetails {
   username: string;
@@ -34,7 +33,6 @@ export function ComeTogether() {
   }, []);
   const user1 = users.find((user) => user.id === 1);
   const album1 = albums.find((album) => album.id === 1);
-  console.log(album1);
   return (
     <ComeTogetherContainer>
       <ComeTogetherText>
@@ -49,6 +47,11 @@ export function ComeTogether() {
         </ul>
       </ComeTogetherText>
       <ComeTogetherImage>
+        {album1?.url ? (
+          <img src={album1?.url} alt={album1?.title} />
+        ) : (
+          <img src={ComeTogetherImg} alt={album1?.title} />
+        )}
         <img src={album1?.url} alt={album1?.title} />
       </ComeTogetherImage>
     </ComeTogetherContainer>
